@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<!---<input id="reloadValue" type="hidden" name="reloadValue" value="" />--->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=yes">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/materialize/css")
+    @Styles.Render("~/materialize/style")
+   
+</head>
+
+
+<body style="padding-top:0">
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <a href="@Url.Action("Index", "Users")" class="brand-logo"><img src="../Content/Images/Logo.png" width="60"></a>
+            <div class="right-align" style="padding-top:1em;">
+                <p class="black-text"><span class="material-icons">phone</span> +353-1-2323232
+                <a class="btn-flat" href="mailto:aedinmlang@gmail.com" target="_blank"><i class="glyphicon glyphicon-envelope" style="transform: translate(0%,-25%)"></i></a></p>
+            </div>
+        </div>
+     </nav>
+ 
+
+    <!--
+        
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Care Tracker", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+              </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @Html.ActionLink("Chart Sample", "Index", "ChartSample") | 
+                    @Html.ActionLink("Calendar sample","Index","Calendar")
+                </ul>
+            </div>
+        </div>
+
+    </div>-->
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/scripts")
+    @Styles.Render("~/Content/jqueryui")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/datetimepicker")
+    @Styles.Render("~/Content/fullcalendarcss")
+    @Scripts.Render("~/bundles/highchart")
+    @Scripts.Render("~/bundles/materialize")
+    <script>
+        $(document).ready(function () {
+            $('select').material_select();
+        });
+    </script>
+
+    
+    <div class="container body-content">
+        
+        @RenderBody()
+        
+    </div>
+    
+
+
+    <footer class="page-footer teal">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <p class="white-text"><b>Home Care Tracker</b></p>
+                    <p class="grey-text text-lighten-4">123 The Road, Tallaght, Dublin 24</p>
+                </div>
+                <div class="col l6 s12">
+                    <p class="white-text"><b>Quick Links</b></p>
+                    <ul>
+                        <li><a class="white-text" href="@Url.Action("Index", "Users")">Home</a></li>
+                        <li><a class="white-text" href="mailto:caretracker.inc@eircom.net.com">Contact: caretracker.inc@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Created by ALang Designs <span class="glyphicon glyphicon-copyright-mark"></span>
+            </div>
+        </div>
+    </footer>
+
+
+    @Scripts.Render("~/bundles/fullcalendarjs")
+    @RenderSection("scripts", required: false)
+    </body>
+</html>
+  
+<script type="text/javascript">
+
+     $(function () {                                          //bootstrap date-picker
+            $(".jqueryui-marker-datepicker").datepicker({
+                    dateFormat: "dd-mm-yy",
+                    changeYear: true,
+                    //changeMonth: true,
+                    yearRange: "-100:+1",
+                    showOn: "button"
+                }).css("display", "inline-block")
+                .next("button"), button({
+                    icons: { primary: "ui-icon-calender" },
+                    //label: "Select a date",
+                    //text:false
+                });
+        })
+
+     /*$('#Date').pickadate({                      //materialize date-picker
+
+         format: "dd-mm-yy",
+         selectMonths: true,
+         selectYears: 15
+     });*/
+
+    $('#DOB').pickadate({                          //materialize date-picker
+
+        format: "dd-mm-yy",
+        selectMonths: true,
+        selectYears: 15
+    });
+
+    </script>
+
+<script>
+    $('.dropdown-button').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constraint_width: true,
+        hover: true,
+        gutter: 0,
+        belowOrigin: true,
+        alignement: 'left'
+    })
+</script>
+
+<!--<script>
+
+    $('#StartTime').pickatime({
+        default: 'now',
+        twelvehour: false, // change to 12 hour AM/PM clock from 24 hour
+        donetext: 'OK',
+        autoclose: false,
+        vibrate: true // vibrate the device when dragging clock hand
+});-->
+   
+
+
+    <script type="text/javascript">
+          $(document).ready(function () {
+             $("#StartTime").datepicker();
+             //$("#endDate").datepicker();
+         });
+</script>
+<script>
+    //DateTime picker
+    //$(document).ready
+    $('#StartTime').datetimepicker({
+        //datepicker:true,
+        inline: true,
+        sideBySide: true
+    });
+   
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#table-bordered").DataTable({
+            scrollx: true
+            //overflow-x:auto;
+        });
+    });
+</script>
+
+    <!--<script type="text/javascript">
+        $(document).ready(function () {
+            var d = new Date();
+            d = d.getTime();
+            if ($('#reloadValue').val().length == 0)
+            {
+                $('#reloadValue').val(d);
+                $('body').show();
+            }
+            else
+            {
+                $('#reloadValue').val('');
+                location.reload();
+            }
+        });//
+
+    </script>-->
+
+
+    
+    
+
+
+<input id="reloadValue" type="hidden" name="reloadValue" value="" />

@@ -1,0 +1,38 @@
+﻿@model CareTrackerV1.ViewModel.ClientVisitUserData
+
+@{
+    ViewBag.Title = "Clients";
+}
+
+
+<h2>Your Clients</h2>
+
+<table class="table">
+    <tr>
+        <th>FirstName</th>
+        <th>Surname</th>
+        <th>DOB</th>
+    </tr>
+
+    @foreach (var item in Model.Clients)
+    {
+        string selectedRow = "";
+        if (item.ID == ViewBag.ClientID)&&(item.)
+        {
+            selectedRow = "success";
+        }
+        <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+        </tr>
+    }
+
+</table>
+

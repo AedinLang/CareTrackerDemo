@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<body>
+    <div id='calendar' style="width:65%"></div>
+
+
+
+
+    <script>
+        $(document).ready(function () {
+
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                defaultView: 'agendaDay',
+                editable: true,
+                allDaySlot: false,
+                selectable: true,
+                slotMinutes: 10,
+                events: '/Calendar/GetVisitEvents',
+                eventClick: function (calEvent, jsEvent, view) {
+                    alert('Visit to: ' + calEvent.title
+                        + "\nAddress: " + calEvent.id
+                        );
+                }
+            });
+            });
+
+            
+     </script>
+
+
+</body>
+
+

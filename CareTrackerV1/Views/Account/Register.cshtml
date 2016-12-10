@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+@model CareTrackerV1.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+</head>
+
+<body>
+
+    <h3 class="teal-text center-align"><b>Register a new Care Giver / Client</b></h3>
+    <div class="row" style="padding:1.5em">
+        <div class="col-md-4" style="background-color: antiquewhite; border: groove; text-align:center; transform: translateX(300px);">
+            <section id="loginForm" style="padding-left:1.5em; padding-bottom:1.5em;">
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group bordered" style="background-color:antiquewhite">
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <!--<div class="bordered">-->
+                        <!--@Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })-->
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Enter first name *" })
+                        </div>
+                        <!--</div>-->
+                        <!--<div class="form-group-lg">-->
+                        <!--@Html.LabelFor(m => m.Surname, new { @class = "col-md-2 control-label" })-->
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", placeholder = "Enter second name *" })
+                        </div>
+                        <!--</div>
+                        <div class="form-group-lg">-->
+                        <!--@Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })-->
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter e-mail *" })
+                        </div>
+                        <!--</div>
+                        <div class="form-group-lg">-->
+                        <!--@Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })-->
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Enter username *" })
+                        </div>
+                        <!--</div>
+                        <div class="form-group-lg">-->
+                        <!--@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })-->
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Enter password *" })
+                        </div>
+                        <!--</div>
+                        <div class="form-group-lg">-->
+                        <!--@Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })-->
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm password *" })
+                        </div>
+                        <!--</div>-->
+                        <!--<div class="form-group-lg">-->
+                        @*@Html.Label("Role", new { @class = "col-md-2 control-label" })*@
+
+                        <div class="col-md-10" style="color: gray; text-align:left;">User role?*</div>
+                        <div class="col-md-10" style="border:thin">
+                            @*@Html.DropDownList("Name")*@
+                            @*@Html.DropDownList("UserRoles", (SelectList)ViewBag.Name, " " )*@
+                            <!--<span class="select-dropdown" style="color: gray;">Select Role*</span>-->
+                            <fieldset style="color: gray; text-align:left; background-color: white;">
+                                @Html.DropDownList("UserRoles", (SelectList)ViewBag.Name)
+                            </fieldset>
+                        </div>
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                        <div class="col-md-10" style="padding-top: 2em">
+                            <input type="submit" class="btn btn-default" value="Register" />
+                        </div>
+                        <!--</div>-->
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+
+</body>
+</html>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+

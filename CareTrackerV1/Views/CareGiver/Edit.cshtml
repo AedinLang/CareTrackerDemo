@@ -1,0 +1,165 @@
+﻿@model CareTrackerV1.Models.CareGiver
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm("Edit", "CareGiver", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <body>
+    <div class="form-horizontal">
+        <h3 class="teal-text center-align"><b>Edit Care Giver Record</b></h3>
+        <hr />
+
+        <div style="padding-bottom:1em;  transform: translateX(180px);">
+            <button type="button" onclick="location.href='@Url.Action("Index", "CareGiver")'" class="btn btn-sm waves-effect waves-light teal lighten-1">Return to list</button>
+        </div>
+
+
+        <div class="row" style="padding-top:1.5em">
+            <div class="col-md-8" style="background-color: antiquewhite; border: groove; text-align:center; transform: translateX(180px);">
+                <section id="loginForm" style="padding-left:1.5em; padding-bottom:1.5em;">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ID)
+
+                    <div class="form-group" style="padding-top:2em">
+                        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-lg-8">
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AddressLine1, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.AddressLine1, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AddressLine1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AddressLine2, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.AddressLine2, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AddressLine2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Region, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            <fieldset style="color: gray; text-align:left; background-color: white;">
+                                @Html.EnumDropDownListFor(model => model.Region, htmlAttributes: new { @class = "dropdown" })
+                                @Html.ValidationMessageFor(model => model.Region, "", new { @class = "text-danger"})
+                             </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Qualifications, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Qualifications, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Qualifications, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CV, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.CV, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CV, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.References, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.References, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.References, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AllClients, "Client", new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            <fieldset style="color: gray; text-align:left; background-color: white;">
+                                @Html.ListBoxFor(m => m.SelectedClients, Model.AllClients)
+                             </fieldset>
+                        </div>
+                    </div>
+
+                    @if (Model.Files.Any(f => f.FileType == CareTrackerV1.Models.FileType.PhotoID))
+                    {
+                        <div class="form-group">
+                            <span class="control-label col-md-4" style="color:gray;">Photo ID</span>
+                            <div class="col-md-6">
+                                <img src="~/File?id=@Model.Files.First(f => f.FileType == CareTrackerV1.Models.FileType.PhotoID).FileId" alt="photoID" width="100"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Change PhotoID", new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                <input type="file" id="PhotoID" name="upload" />
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                    <div class="form-group">
+                        @Html.Label("PhotoID", new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            <input type="file" id="PhotoID" name="upload" />
+                        </div>
+                    </div>
+                    }
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                            <button type="button" onclick="location.href='@Url.Action("Index", "CareGiver")'" class="btn btn-sm waves-effect waves-light teal lighten-1">Return to list</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+   </body>
+}
+
+
+
+

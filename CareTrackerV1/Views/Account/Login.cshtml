@@ -1,0 +1,68 @@
+﻿@using CareTrackerV1.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h4 class="teal-text center-align"><b>Login</b></h4>
+<div class="row" style="padding:1em">
+    <div class="col-md-4" style="background-color: antiquewhite; border: groove; text-align:center; transform: translateX(300px);"  >
+        <section id="loginForm" style="padding-left:1.5em; padding-bottom:1.5em;">
+            
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.EditorFor(m => m.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter your username"} })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.EditorFor(m => m.Password, new { htmlAttributes= new { @class = "form-control", placeholder = "Enter you password" } })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    
+                    </div>
+                    <label>
+                    <a class="teal-text" href=""><b>Forgot Password?</b></a>
+                        </label>
+                </div>
+                <!--<div class="form-group">
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>-->
+                <div class="form-group" style="padding-top:1em">
+                    <div class="col-md-10">
+                        <input type="submit" value="Log in" class="btn btn-default" />
+                    </div>
+                </div>
+
+
+                <!--<p>    COMMENT OUT. APP OPENING PAGE SHOULD ONLY GIVE ACCESS TO LOGIN.
+                    @Html.ActionLink("Register as a new user", "Register")
+                </p>-->
+                @* Enable this once you have account confirmation enabled for password reset functionality
+                    <p>
+                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                    </p>*@
+            }
+        </section>
+    </div>
+    <div class="col-md-4">
+        <section id="socialLoginForm">
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

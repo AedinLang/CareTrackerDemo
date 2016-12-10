@@ -1,0 +1,41 @@
+﻿@model CareTrackerV1.ViewModel.ClientVisitUserData
+
+@{
+    ViewBag.Title = "Clients";
+}
+
+<script src="@Url.Content("~/Scripts/DayPilot/daypilot-all.min.js")" type="text/javascript"></script>
+
+<h3>Client List</h3>
+
+<table class="table">
+
+    <tr>
+        <th>First Name</th>
+        <th>Surname</th>
+        <th>DOB</th>
+    </tr>
+
+
+    @foreach (var item in Model.Clients)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.ActionLink("Select", "CareGiverClientVisitIndex", "Visit", new { id = item.ID }, null)
+            </td>
+        </tr>
+    }
+
+</table>
+
+

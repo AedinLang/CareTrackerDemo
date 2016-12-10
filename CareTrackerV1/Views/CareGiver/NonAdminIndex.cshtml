@@ -1,0 +1,86 @@
+﻿@model CareTrackerV1.ViewModel.CareGiverIndexData
+
+@{
+    ViewBag.Title = "CareGivers";
+}
+
+<h2>Clients</h2>
+
+<!--<p>
+    @Html.ActionLink("Create New", "Create")
+</p>-->
+
+<h3>Client List</h3>
+
+<table class="table">
+
+    <tr>
+        <th>First Name</th>
+        <th>Surname</th>
+        <th>DOB</th>
+    </tr>
+
+    @foreach (var item in Model.Clients)
+    {
+        string selectedRow = "";
+        if (item.ID == ViewBag.ClientID)
+        {
+            selectedRow = "success";
+        }
+        <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.ActionLink("Select", "Index", new { id = item.ID }) |
+                <!--@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |-->
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                <!--@Html.ActionLink("Delete", "Delete", new { id = item.ID })-->
+            </td>
+        </tr>
+        }
+
+    </table>
+
+
+
+@if (Model.Visits != null)
+{
+    <h3>Visit List</h3>
+        <table class="table">
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Details</th>
+            </tr>
+
+            @foreach (var item in Model.Visits)
+            {
+                string selectedRow = "";
+                if ((item.CareGiverID == ViewBag.CareGiverID) && (item.ClientID == ViewBag.ClientID))
+                {
+                    selectedRow = "success";
+                }
+
+                <tr class="@selectedRow">
+                    <td>
+                        @item.Date
+                    </td>
+                    <td>
+                        @item.Time
+                    </td>
+                    <td>
+                        @item.Details
+                    </td>
+                </tr>
+            }
+        </table>
+}
+
+

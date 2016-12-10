@@ -1,0 +1,120 @@
+﻿@model IEnumerable<CareTrackerV1.Models.Client>
+
+@using PagedList;
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="teal-text">Client List</h2>
+
+<div style="padding-bottom:1em">
+    <button type="button" onclick="location.href='@Url.Action("Create", "Client")'" class="btn btn-sm waves-effect waves-light teal lighten-1">Add new CLient</button>
+</div>
+
+
+@using (Html.BeginForm("Index","Client",FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<div style="overflow-x:auto;white-space:nowrap">
+    <table class="table-bordered">
+        <thead style="background-color:lightgray">
+            <tr>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.FirstName)*@
+                    First Name
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.Surname)*@
+                    @Html.ActionLink("Surname", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.DOB)*@
+                    @Html.ActionLink("DOB", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddressLine1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddressLine2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Region)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Medication)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HealthSummary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DoctorID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NextOfKinID)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressLine1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressLine2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Region)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medication)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HealthSummary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DoctorID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NextOfKinID)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>
+    <br />
+    @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

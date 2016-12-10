@@ -1,0 +1,78 @@
+﻿@model IEnumerable<CareTrackerV1.Models.Visit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlertType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlertDetails)
+        </th>
+        <th>CareGiver</th>
+        <th>Client</th>
+        <th>Selected Tasks</th>
+        <th>Other Task Details</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlertType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlertDetails)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CareGiver.FirstName)
+                @Html.DisplayFor(modelItem => item.CareGiver.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.FirstName)
+                @Html.DisplayFor(modelItem => item.Client.Surname)
+            </td>
+            <td>
+                @{
+                    foreach (var visitTask in item.VisitTasks)
+                    {
+                        @visitTask.ID @:  @visitTask.Description <br />
+                }
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Details)
+            </td>
+
+        </tr>
+                    }
+
+</table>
+

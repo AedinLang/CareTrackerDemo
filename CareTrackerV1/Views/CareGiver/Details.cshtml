@@ -1,0 +1,122 @@
+﻿@model CareTrackerV1.Models.CareGiver
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="teal-text">Care Giver Details</h2>
+
+<div style="padding-bottom:1em">
+    <button type="button" onclick="location.href='@Url.Action("Index", "CareGiver")'" class="btn btn-sm waves-effect waves-light teal lighten-1">Return to list</button>
+    <button type="button" onclick="location.href='@Url.Action("Edit", "CareGiver", new { id = Model.ID })'" class="btn btn-sm waves-effect waves-light teal lighten-1">Edit Details</button>
+</div>
+
+<section class="bordered" style="border:thin">
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressLine1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressLine1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressLine2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressLine2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Region)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Qualifications)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Qualifications)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.References)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.References)
+        </dd>
+
+        
+        @if (Model.Files.Any(f => f.FileType == CareTrackerV1.Models.FileType.PhotoID))
+        {
+            <dt>
+                PhotoID
+            </dt>
+            <dd>
+                <img src="~/File?id=@Model.Files.First(f => f.FileType == CareTrackerV1.Models.FileType.PhotoID).FileId" alt="photoID" width="100" /> <!--need to include rotation value-->
+            </dd>
+        }
+    </dl>
+    
+</div>
+</section>
+   
+
+    
