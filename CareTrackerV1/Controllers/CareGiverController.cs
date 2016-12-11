@@ -21,42 +21,7 @@ namespace CareTrackerV1.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: CareGiver
-        /* public ActionResult Index(int? id, int? clientID)
-         {
-             var viewModel = new CareGiverIndexData();
-
-             viewModel.CareGivers = db.CareGivers
-                 .Include(i => i.Clients)
-                 .Include(i => i.Visits)
-                 .OrderBy(i => i.Surname);
-
-
-
-             if (id != null)
-             {
-                 ViewBag.CareGiverID = id.Value;
-                 viewModel.Clients = viewModel.CareGivers.
-                     Where(i => i.ID == id.Value).Single().Clients;
-
-             }
-
-             if (clientID != null)
-             {
-                 ViewBag.ClientID = clientID.Value;
-
-                 viewModel.Visits = from v in db.Visits
-                                    where
-                                    (v.ClientID == clientID)
-                                    where
-                                    (v.CareGiverID == id.Value)
-                                    select v;
-            }
-
-             return View(viewModel);
-
-             }*/
-
+        
         public ActionResult Index(int? id, int? clientID)
         {
             var viewModel = new CareGiverIndexData();

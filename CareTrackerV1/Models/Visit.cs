@@ -18,13 +18,13 @@ namespace CareTrackerV1.Models
         public int ID { get; set; }
 
         [Required]
-        [Display(Name = "Start time of visit")]
+        [Display(Name = "Start date & time of visit")]
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
         public DateTime? StartTime { get; set; }      //Sort out format
 
         //[Required]
-        [Display(Name = "End time of visit")]
+        [Display(Name = "End date & time of visit")]
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
         public DateTime? EndTime { get; set; }      //Sort out format

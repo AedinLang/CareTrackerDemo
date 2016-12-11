@@ -1,8 +1,6 @@
 ﻿using CareTrackerV1.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace CareTrackerV1.Controllers
@@ -20,13 +18,11 @@ namespace CareTrackerV1.Controllers
                 allVisitForCalendar.Add(calendarentry);
             }
 
-            //var allVisits = ViewBag.AllVisits;
-
             var visitList = from v in allVisitForCalendar
                             select new
                             {
                                 id = v.Client.AddressLine1+","+v.Client.AddressLine2,
-                                title=v.Client.FirstName+" "+v.Client.Surname,
+                                title= v.CareGiver.FirstName + " " + v.CareGiver.Surname + " visit to " + v.Client.FirstName+" "+v.Client.Surname,
                                 start = v.StartTime,
                                 end = v.EndTime
                             };
@@ -63,7 +59,6 @@ namespace CareTrackerV1.Controllers
         // Fill array for calendar view
         public List<Visit> Fill(int? careGiverID)
         {
-            //var user = User.Identity;
             var allVisits = db.Visits;
             var allVisitsForCalendar = new List<Visit>();
 
@@ -90,18 +85,11 @@ namespace CareTrackerV1.Controllers
         // GET: Calendar
         public ActionResult Index()
         {
-            //ViewBag.CareGiver = careGiverID;
-            //var model = new Visit();
-            //model.CareGiverID = careGiverID;
             return View();
         }
 
         public ActionResult CareGiverIndex(int careGiverID)
         {
-            //string path = "/Calendar/GetVisitEventsForCareGiver?" + careGiverID.ToString();
-            //ViewBag.path = path;
-            //var model = new Visit();
-            //model.CareGiverID = careGiverID;
             ViewBag.CareGiverID = careGiverID;
             return View();
         }

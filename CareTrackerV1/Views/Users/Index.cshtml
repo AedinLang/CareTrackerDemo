@@ -4,94 +4,70 @@
 }
 
 
-<!--@if (ViewBag.displayMenu == "Yes")
-{
-    <h1>Welcome Admin. Now you can create user Role.</h1>
-    <h3>
-        @Html.ActionLink("Manage Role", "Index", "Role")
-    </h3>
-}
-else
-{
-    <h2>  Welcome <strong>@ViewBag.Name</strong> :) .We will add user module soon </h2>
-}
-    -->
-
-
 @using (Html.BeginForm("LogOff", "Account"))
 {
     @Html.AntiForgeryToken()
     <button class="btn btn-default pull-right" type="submit">LogOff</button>
 }
 
+<div class="parallax" style="height:70%;">
+    <img src="../Content/Images/hands2.jpg" alt="Unsplashed background img 1" style="display:block;">
+</div>
+
 @if (ViewBag.displayMenu == "Yes")
 {
     <div class="row" style="padding:1.5em">
-        <!--<a class="btn-flat" href="@Url.Action("Logoff", "Account")"><span>LOGOFF</span></a>
-        <input type="submit" value="Log Off" class="btn btn-default" />-->
+        
         <div class="navbar-collapse collapse">
             <a class="dropdown-button btn" data-activates="dropdown1">Care Givers</a>
             <ul id="dropdown1" class="dropdown-content">
                 <li><a href="CareGiver/Index">List</a></li>
                 <li><a href="Account/Register">Register</a></li>
             </ul>
+
             <a class="dropdown-button btn" data-activates="dropdown2">Clients</a>
             <ul id="dropdown2" class="dropdown-content">
                 <li><a href="Client/Index">List</a></li>
                 <li><a href="Client/Create">New client</a></li>
             </ul>
+
             <a class="dropdown-button btn" data-activates="dropdown3">Client Visits</a>
             <ul id="dropdown3" class="dropdown-content">
                 <li><a href="Visit/Index">List</a></li>
                 <li><a href="VisitTask/Index">New task</a></li>
                 <li><a href="Visit/Create">Schedule visit</a></li>
             </ul>
+
             <a class="dropdown-button btn" data-activates="dropdown4">Calendar</a>
             <ul id="dropdown4" class="dropdown-content">
                 <li><a href="Calendar/Index">Schedule</a></li>
             </ul>
+
             <a class="dropdown-button btn" data-activates="dropdown5">Statistics</a>
             <ul id="dropdown5" class="dropdown-content">
                 <li><a href="CareGiver/Chart1">CareGiver hours</a></li>
             </ul>
 
-            <div class="parallax" style="height:70%;">
-                <img src="../Content/Images/hands2.jpg" alt="Unsplashed background img 1" style="display:block;">
-            </div>
-            <!--<ul class="nav navbar-nav">
-
-                <li>@Html.ActionLink("Care Giver", "Index", "CareGiver", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Client", "Index", "Client", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Next Of Kin", "Index", "NextOfKin", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Doctor", "Index", "Doctor", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Visit", "Index", "Visit", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Visit Tasks", "Index", "VisitTask", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Chart", "Chart1", "CareGiver", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Calendar sample", "Index", "Calendar")</li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-            </ul>-->
-
         </div>
         <h2 class="header center teal-text">Home Care Giver Tracker</h2>
         <h4 class="header col s12 white-text">Easily manage your Care Giving Staff, view Clients, track and schedule visits.</h4>
         </div>
-        <!--<h3>
-            @Html.ActionLink("Manage Role", "Index", "Role")
-        </h3>-->
-        }
-        else if (ViewBag.displaymenu == "Care Giver")
-        {
-        <h2>  Welcome <strong>@ViewBag.Name @ViewBag.UserID @ViewBag.CareGiverID</strong> :) You have access to your Client data only </h2>
 
+}
+else if (ViewBag.displaymenu == "Care Giver")
+{
+    <div class="row" style="padding:1.5em">
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <!--<li>@Html.ActionLink("Client", "CareGiverIndex", "Client", new { area="" }, null)</li>  need to pass UserID/CareGiverID fro here to Client Controller-->
-                <li>@Html.ActionLink("Client", "CareGiverIndex", "Client", new { UserID = ViewBag.UserID, careGiverID = ViewBag.CareGiverID }, null)</li>
-                <li>@Html.ActionLink("Calendar", "CareGiverIndex", "Calendar", new { careGiverID = ViewBag.CareGiverID }, null)</li>
-            </ul>
+            <button type="button" onclick="location.href='@Url.Action("CareGiverIndex", "Client", new { UserID = ViewBag.UserID, careGiverID = ViewBag.CareGiverID }, null)'" class="btn btn-sm waves-effect waves-light teal lighten-1">Client List</button>
+            <button type="button" onclick="location.href='@Url.Action("CareGiverIndex", "Calendar", new { careGiverID = ViewBag.CareGiverID }, null)'" class="btn btn-sm waves-effect waves-light teal lighten-1">My Calendar</button>
         </div>
-        }
+    </div>
+
+    <div>
+        <h2 class="header center teal-text">  Welcome <strong>@ViewBag.Name</strong></h2>
+        <h4 class="header center white-text">View your assigned Client List and Visit Calendar.<br />Enter Visit Details.</h4>
+    </div>
+    
+}
 
 
