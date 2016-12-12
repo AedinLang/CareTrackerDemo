@@ -428,6 +428,8 @@ namespace CareTrackerV1.Controllers
             Response.Cache.AppendCacheExtension("no-cache");
             Response.Expires = 0;*/
 
+
+
             Session.Abandon();
             Session.Clear();
             Session.RemoveAll();

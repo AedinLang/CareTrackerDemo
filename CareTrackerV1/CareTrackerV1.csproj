@@ -194,7 +194,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\CareGiverController.cs" />
-    <Compile Include="Controllers\ChartSampleController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\FileController.cs" />
@@ -580,8 +579,6 @@
     <Content Include="Views\CareGiver\NonAdminIndex.cshtml" />
     <Content Include="Views\Client\CareGiverIndex.cshtml" />
     <Content Include="Views\Visit\CareGiverClientVisitIndex.cshtml" />
-    <Content Include="Views\ChartSample\Index.cshtml" />
-    <Content Include="Views\ChartSample\Chart1.cshtml" />
     <Content Include="Views\CareGiver\Chart1.cshtml" />
     <Content Include="Views\Calendar\Index.cshtml" />
     <Content Include="Views\Calendar\CareGiverIndex.cshtml" />

@@ -19,7 +19,6 @@ namespace CareTrackerV1.Controllers
         public ActionResult Index()
         {
             var visits = db.Visits.Include(c => c.CareGiver).Include(cl => cl.Client); // Including CareGiver and Client allows eager loading of names etc
-            //return View(visits.ToList());
             return View(db.Visits.ToList());
         }
 

@@ -60,7 +60,6 @@ namespace CareTrackerV1.Controllers
         public ActionResult Chart1()
         {
             //X axis data
-            //var xData = db.CareGivers.Select(i => i.Surname).ToArray();
             var xData = db.CareGivers.Select(i => i.ID.ToString()).ToArray();
 
             //Collect y axis data
@@ -122,7 +121,6 @@ namespace CareTrackerV1.Controllers
                     BackgroundColor = new BackColorOrGradient(ColorTranslator.FromHtml("#FFFFFF")),
                     Floating = true
                 })
-                //.SetTooltip(new Tooltip { Formatter = @"function() { return ''+ this.x +; }" })
                 .SetPlotOptions(new PlotOptions
                 {
                     Column = new PlotOptionsColumn
@@ -173,12 +171,6 @@ namespace CareTrackerV1.Controllers
                                    select v;
             }
 
-            /*if (clientID != null)
-            {
-                ViewBag.ClientID = clientID.Value;
-                viewModel.Visits = viewModel.Clients.
-                    Where(i => i.ID == clientID.Value).Single().Visits;
-            }*/
 
             return View(viewModel);
 
@@ -291,15 +283,6 @@ namespace CareTrackerV1.Controllers
             if (TryUpdateModel(careGiverToUpdate, "",
       new string[] { "FirstName", "Surname", "AddressLine1", "AddressLine2", "Region", "Email", "PhoneNumber", "Mobile", "Qualifications", "CV", "References", "UserID" }))
             {
-                /*try
-                {
-                    UpdateCareGiver(selectedClients, careGiverToUpdate);
-
-                    db.Entry(careGiverToUpdate).State = EntityState.Modified;
-                    db.SaveChanges();
-
-                    return RedirectToAction("Index");
-                }*/
                 try
                 {
                     if (upload != null && upload.ContentLength > 0)
