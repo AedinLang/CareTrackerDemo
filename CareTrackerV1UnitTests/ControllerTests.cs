@@ -14,13 +14,26 @@ namespace CareTrackerV1UnitTests
     {
         [TestMethod]
         [Timeout(2000)]
-        public void CareGiverController()
+        public void CareGiverControllerIndexFail()
         {
             //Arrange
             CareGiverController controller = new CareGiverController();
 
             //Act
             ViewResult result = controller.Index(1,1) as ViewResult;    //Index values must match table data
+
+            //Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void CareGiverControllerIndexPass()
+        {
+            //Arrange
+            CareGiverController controller = new CareGiverController();
+
+            //Act
+            ViewResult result = controller.Index(14, 4) as ViewResult;    //Index values must match table data
 
             //Assert
             Assert.IsNotNull(result);
